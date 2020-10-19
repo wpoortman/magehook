@@ -1,0 +1,5 @@
+"A short description of the webhook purpose","A short description of the webhook purpose","module","MageHook_Hook"
+"Select the current application environment","Select the current application environment","module","MageHook_Hook"
+"All requests and responses will be kept in memory, and as such, is not recommended when sending a large number or an indeterminate number of requests concurrently (default: 15)","All requests and responses will be kept in memory, and as such, is not recommended when sending a large number or an indeterminate number of requests concurrently (default: 15)","module","MageHook_Hook"
+"Additional application parameters what will be merged with every single 'webhook' request","Additional application parameters what will be merged with every single 'webhook' request","module","MageHook_Hook"
+"Unknown Event Description","Unknown Event Description","module","MageHook_Hook"

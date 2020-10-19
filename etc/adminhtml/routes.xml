@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!--
+ * @author MageHook <info@magehook.com>
+ * @package MageHook_Hook
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:App/etc/routes.xsd">
+  <router id="admin">
+    <route id="webhook"
+           frontName="webhook">
+      <module name="MageHook_Hook"/>
+    </route>
+  </router>
+</config>

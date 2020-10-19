@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ * @author MageHook <info@magehook.com>
+ * @package MageHook_Hook
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="config">
+      <xs:complexType>
+        <xs:sequence>
+          <xs:element name="hook"
+                      type="hookDeclaration"
+                      maxOccurs="unbounded">
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+
+        <xs:unique name="uniqueEvent">
+          <xs:annotation>
+            <xs:documentation>Event name must be unique.</xs:documentation>
+          </xs:annotation>
+          <xs:selector xpath="hook"/>
+          <xs:field xpath="@event"/>
+        </xs:unique>
+    </xs:element>
+
+    <xs:complexType name="hookDeclaration">
+      <xs:annotation>
+        <xs:documentation>Webhook declaration.</xs:documentation>
+      </xs:annotation>
+
+      <xs:attribute name="event"
+                    type="eventName"
+                    use="required"/>
+      <xs:attribute name="title"
+                    type="eventTitle"
+                    use="required"/>
+      <xs:attribute name="group"
+                    type="eventGroup"/>
+      <xs:attribute name="purpose"
+                    type="eventPurpose"/>
+      <xs:attribute name="service"
+                    type="xs:string"/>
+      <xs:attribute name="converter"
+                    type="xs:string"/>
+      <xs:attribute name="validator"
+                    type="xs:string"/>
+      <xs:attribute name="type"
+                    type="xs:string"
+                    default="default"/>
+      <xs:attribute name="request"
+                    type="xs:string"
+                    default="async"/>
+      <xs:attribute name="list"
+                    type="xs:string"
+                    default="adminhtml"/>
+    </xs:complexType>
+
+    <xs:simpleType name="eventName">
+        <xs:annotation>
+            <xs:documentation>Event name can contain only [a-zA-Z0-9_].</xs:documentation>
+        </xs:annotation>
+
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[a-zA-Z0-9_]+"/>
+            <xs:minLength value="1"/>
+            <xs:maxLength value="255"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="eventTitle">
+      <xs:annotation>
+        <xs:documentation>Event title can contain only [a-zA-Z0-9_ ].</xs:documentation>
+      </xs:annotation>
+
+      <xs:restriction base="xs:string">
+        <xs:pattern value="[a-zA-Z0-9_ ]+"/>
+      </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="eventGroup">
+      <xs:annotation>
+        <xs:documentation>Event group can contain only [a-zA-Z0-9_ ].</xs:documentation>
+      </xs:annotation>
+
+      <xs:restriction base="xs:string">
+        <xs:pattern value="[a-zA-Z0-9_ ,:;]+"/>
+      </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="eventPurpose">
+      <xs:annotation>
+        <xs:documentation>Event purpose can contain only [a-zA-Z0-9_ ].</xs:documentation>
+      </xs:annotation>
+
+      <xs:restriction base="xs:string">
+        <xs:pattern value="[a-zA-Z0-9_ ,:;]+"/>
+      </xs:restriction>
+    </xs:simpleType>
+</xs:schema>

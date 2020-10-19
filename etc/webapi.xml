@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ * @author MageHook <info@magehook.com>
+ * @package MageHook_Hook
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+-->
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
+  <route url="/V1/magehook/webhook/list" method="GET">
+    <service class="MageHook\Hook\Api\WebhookRepositoryInterface" method="getList"/>
+    <resources>
+      <resource ref="MageHook_Hook::default"/>
+    </resources>
+  </route>
+</routes>

@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ * @author MageHook <info@magehook.com>
+ * @package MageHook_Hook
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+-->
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+  <argument name="data" xsi:type="array">
+    <item name="js_config" xsi:type="array">
+      <item name="provider" xsi:type="string">magehook_webhook_form.magehook_webhook_form_data_source</item>
+      <item name="deps" xsi:type="string">magehook_webhook_form.magehook_webhook_form_data_source</item>
+    </item>
+    <item name="label" xsi:type="string" translate="true">Options</item>
+    <item name="config" xsi:type="array">
+      <item name="dataScope" xsi:type="string">data</item>
+      <item name="namespace" xsi:type="string">magehook_webhook_form</item>
+    </item>
+  </argument>
+
+  <!-- Form settings -->
+  <settings>
+    <buttons>
+      <button name="save_and_continue" class="MageHook\Hook\Block\Adminhtml\Webhook\Edit\SaveAndContinueButton"/>
+      <button name="save" class="MageHook\Hook\Block\Adminhtml\Webhook\Edit\SaveButton"/>
+      <button name="delete" class="MageHook\Hook\Block\Adminhtml\Webhook\Edit\DeleteButton"/>
+      <button name="back" class="MageHook\Hook\Block\Adminhtml\Webhook\BackButton"/>
+    </buttons>
+    <namespace>magehook_webhook_form</namespace>
+    <dataScope>data</dataScope>
+    <layout>
+      <navContainerName>left</navContainerName>
+      <type>tabs</type>
+    </layout>
+    <deps>
+      <dep>magehook_webhook_form.magehook_webhook_form_data_source</dep>
+    </deps>
+  </settings>
+  
+  <dataSource name="magehook_webhook_form_data_source">
+    <argument name="dataProvider" xsi:type="configurableObject">
+      <argument name="class" xsi:type="string">MageHook\Hook\Ui\DataProvider\Form\Webhook</argument>
+      <argument name="name" xsi:type="string">magehook_webhook_form_data_source</argument>
+      <argument name="primaryFieldName" xsi:type="string">id</argument>
+      <argument name="requestFieldName" xsi:type="string">id</argument>
+      <argument name="meta" xsi:type="array">
+        <item name="webhook" xsi:type="array">
+          <item name="config" xsi:type="array">
+            <item name="label" xsi:type="string" translate="true">Basic Information</item>
+          </item>
+        </item>
+      </argument>
+      <argument name="data" xsi:type="array">
+        <item name="config" xsi:type="array">
+          <item name="submit_url" xsi:type="url" path="webhook/grid/save"/>
+        </item>
+      </argument>
+    </argument>
+    
+    <argument name="data" xsi:type="array">
+      <item name="js_config" xsi:type="array">
+        <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+      </item>
+    </argument>
+  </dataSource>
+
+  <!-- Form tab -->
+  <fieldset name="webhook">
+    <argument name="data" xsi:type="array">
+      <item name="config" xsi:type="array">
+        <item name="label" xsi:type="string" translate="true">Configuration</item>
+        <item name="sortOrder" xsi:type="number">10</item>
+      </item>
+    </argument>
+
+    <!-- (hidden) Event select field -->
+    <field name="event">
+      <argument name="data" xsi:type="array">
+        <item name="options" xsi:type="object">MageHook\Hook\Model\Config\Source\Webhook\Event</item>
+        <item name="config" xsi:type="array">
+          <item name="dataType" xsi:type="string">text</item>
+          <item name="label" xsi:type="string" translate="true">Event</item>
+          <item name="formElement" xsi:type="string">select</item>
+          <item name="sortOrder" xsi:type="number">10</item>
+          <item name="dataScope" xsi:type="string">event</item>
+          <item name="disabled" xsi:type="boolean">true</item>
+          <item name="tooltip" xsi:type="array">
+            <item name="description" xsi:type="string">
+              Event selection can only be done during the creation of a new webhook
+            </item>
+          </item>
+        </item>
+      </argument>
+    </field>
+
+    <!-- Name input field -->
+    <field name="name">
+      <argument name="data" xsi:type="array">
+        <item name="config" xsi:type="array">
+          <item name="dataType" xsi:type="string">text</item>
+          <item name="label" xsi:type="string" translate="true">Name</item>
+          <item name="formElement" xsi:type="string">input</item>
+          <item name="sortOrder" xsi:type="number">30</item>
+          <item name="dataScope" xsi:type="string">name</item>
+          <item name="validation" xsi:type="array">
+            <item name="required-entry" xsi:type="boolean">true</item>
+          </item>
+        </item>
+      </argument>
+    </field>
+
+    <!-- URL text field -->
+    <field name="url">
+      <argument name="data" xsi:type="array">
+        <item name="config" xsi:type="array">
+          <item name="dataType" xsi:type="string">text</item>
+          <item name="label" xsi:type="string" translate="true">URL</item>
+          <item name="formElement" xsi:type="string">input</item>
+          <item name="sortOrder" xsi:type="number">20</item>
+          <item name="dataScope" xsi:type="string">url</item>
+          <item name="validation" xsi:type="array">
+            <item name="required-entry" xsi:type="boolean">true</item>
+            <item name="validate-url" xsi:type="boolean">true</item>
+          </item>
+        </item>
+      </argument>
+    </field>
+
+    <!-- Is Active select field -->
+    <field name="is_active">
+      <argument name="data" xsi:type="array">
+        <item name="options" xsi:type="object">MageHook\Hook\Model\Config\Source\Webhook\Status</item>
+        <item name="config" xsi:type="array">
+          <item name="dataType" xsi:type="string">bool</item>
+          <item name="label" xsi:type="string" translate="true">Active</item>
+          <item name="formElement" xsi:type="string">select</item>
+          <item name="sortOrder" xsi:type="number">40</item>
+          <item name="dataScope" xsi:type="string">is_active</item>
+        </item>
+      </argument>
+    </field>
+  </fieldset>
+
+  <!-- Form tab (preference for "custom_options") -->
+  <fieldset name="options">
+    <argument name="data" xsi:type="array">
+      <item name="config" xsi:type="array">
+        <item name="label" xsi:type="string" translate="true">Filter Options</item>
+        <item name="sortOrder" xsi:type="number">20</item>
+      </item>
+    </argument>
+  </fieldset>
+
+  <!-- Form tab -->
+  <fieldset name="developer">
+    <argument name="data" xsi:type="array">
+      <item name="config" xsi:type="array">
+        <item name="label" xsi:type="string" translate="true">Developer</item>
+        <item name="sortOrder" xsi:type="number">30</item>
+      </item>
+    </argument>
+
+    <!-- Deployment Mode select field -->
+    <field name="deployment_mode">
+      <argument name="data" xsi:type="array">
+        <item name="options" xsi:type="object">MageHook\Hook\Model\Config\Source\Webhook\DeploymentMode</item>
+        <item name="config" xsi:type="array">
+          <item name="dataType" xsi:type="string">bool</item>
+          <item name="label" xsi:type="string" translate="true">Deployment Mode</item>
+          <item name="formElement" xsi:type="string">select</item>
+          <item name="sortOrder" xsi:type="number">20</item>
+          <item name="dataScope" xsi:type="string">deployment_mode</item>
+          <item name="notice" xsi:type="string" translate="true">
+            Will only be active if the specified mode has a corresponding with the current application mode
+          </item>
+        </item>
+      </argument>
+    </field>
+
+    <!-- Signal Only select field -->
+    <field name="only_signal">
+      <argument name="data" xsi:type="array">
+        <item name="options" xsi:type="object">Magento\Config\Model\Config\Source\Yesno</item>
+        <item name="config" xsi:type="array">
+          <item name="dataType" xsi:type="string">int</item>
+          <item name="label" xsi:type="string" translate="true">Only Signal</item>
+          <item name="formElement" xsi:type="string">select</item>
+          <item name="sortOrder" xsi:type="number">50</item>
+          <item name="dataScope" xsi:type="string">only_signal</item>
+          <item name="default" xsi:type="number">0</item>
+          <item name="notice" xsi:type="string" translate="true">Will only send a signal without any data</item>
+        </item>
+      </argument>
+    </field>
+
+    <!-- Dynamic Row container -->
+    <container name="query_data">
+      <argument name="data" xsi:type="array">
+        <item name="config" xsi:type="array">
+          <item name="component" xsi:type="string">Magento_Ui/js/dynamic-rows/dynamic-rows</item>
+          <item name="template" xsi:type="string">MageHook_Hook/form/dynamic-rows/grid</item>
+          <item name="componentType" xsi:type="string">dynamicRows</item>
+          <item name="recordTemplate" xsi:type="string">record</item>
+          <item name="deleteButtonLabel" xsi:type="string">Remove</item>
+          <item name="addButtonLabel" xsi:type="string">New parameter</item>
+          <item name="deleteProperty" xsi:type="boolean">false</item>
+        </item>
+      </argument>
+
+      <!-- Dynamic Row row -->
+      <container name="record">
+        <argument name="data" xsi:type="array">
+          <item name="config" xsi:type="array">
+            <item name="component" xsi:type="string" translate="true">Magento_Ui/js/dynamic-rows/record</item>
+            <item name="isTemplate" xsi:type="boolean">true</item>
+            <item name="is_collection" xsi:type="boolean">true</item>
+            <item name="showFallbackReset" xsi:type="boolean">false</item>
+          </item>
+        </argument>
+
+        <!-- Row Name input field -->
+        <field name="name">
+          <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+              <item name="dataType" xsi:type="string">text</item>
+              <item name="label" xsi:type="string" translate="true">Name</item>
+              <item name="formElement" xsi:type="string">input</item>
+              <item name="required" xsi:type="boolean">true</item>
+              <item name="sortOrder" xsi:type="number">10</item>
+            </item>
+          </argument>
+        </field>
+
+        <!-- Row Value input field -->
+        <field name="value">
+          <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+              <item name="dataType" xsi:type="string">text</item>
+              <item name="label" xsi:type="string" translate="true">Value</item>
+              <item name="formElement" xsi:type="string">input</item>
+              <item name="sortOrder" xsi:type="number">20</item>
+            </item>
+          </argument>
+        </field>
+
+        <!-- Query Type select field -->
+        <field name="type">
+          <argument name="data" xsi:type="array">
+            <item name="options" xsi:type="object">MageHook\Hook\Model\Config\Source\Webhook\Query\Type</item>
+            <item name="config" xsi:type="array">
+              <item name="dataType" xsi:type="string">text</item>
+              <item name="label" xsi:type="string" translate="true">Type</item>
+              <item name="formElement" xsi:type="string">select</item>
+              <item name="sortOrder" xsi:type="number">30</item>
+            </item>
+          </argument>
+        </field>
+        
+        <actionDelete>
+          <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+              <item name="componentType" xsi:type="string">actionDelete</item>
+              <item name="dataType" xsi:type="string">text</item>
+              <item name="fit" xsi:type="boolean">false</item>
+              <item name="label" xsi:type="string">Actions</item>
+              <item name="sortOrder" xsi:type="string">40</item>
+              <item name="additionalClasses" xsi:type="string">data-grid-actions-cell</item>
+              <item name="template" xsi:type="string">Magento_Backend/dynamic-rows/cells/action-delete</item>
+            </item>
+          </argument>
+        </actionDelete>
+      </container>
+    </container>
+  </fieldset>
+</form>

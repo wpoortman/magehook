@@ -1,0 +1,168 @@
+<?xml version="1.0"?>
+<!--
+ * @author MageHook <info@magehook.com>
+ * @package MageHook_Hook
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+-->
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+  <argument name="data" xsi:type="array">
+    <item name="js_config" xsi:type="array">
+      <item name="provider" xsi:type="string">
+        magehook_webhook_listing.magehook_webhook_listing_data_source
+      </item>
+      <item name="deps" xsi:type="string">
+        magehook_webhook_listing.magehook_webhook_listing_data_source
+      </item>
+    </item>
+    
+    <item name="spinner" xsi:type="string">magehook_webhook_columns</item>
+    
+    <item name="buttons" xsi:type="array">
+      <item name="add" xsi:type="array">
+        <item name="name" xsi:type="string">add</item>
+        <item name="label" xsi:type="string" translate="true">New</item>
+        <item name="class" xsi:type="string">primary</item>
+        <item name="url" xsi:type="string">*/*/start</item>
+      </item>
+    </item>
+  </argument>
+  
+  <dataSource name="magehook_webhook_listing_data_source">
+    <argument name="dataProvider" xsi:type="configurableObject">
+      <argument name="class" xsi:type="string">
+        MageHook\Hook\View\Element\UiComponent\DataProvider\Webhook\Listing
+      </argument>
+      <argument name="name" xsi:type="string">magehook_webhook_listing_data_source</argument>
+      <argument name="primaryFieldName" xsi:type="string">id</argument>
+      <argument name="requestFieldName" xsi:type="string">id</argument>
+      <argument name="data" xsi:type="array">
+        <item name="config" xsi:type="array">
+          <item name="component" xsi:type="string">Magento_Ui/js/grid/provider</item>
+          <item name="update_url" xsi:type="url" path="mui/index/render"/>
+          <item name="storageConfig" xsi:type="array">
+            <item name="indexField" xsi:type="string">id</item>
+          </item>
+        </item>
+      </argument>
+    </argument>
+  </dataSource>
+  
+  <listingToolbar name="listing_top">
+    <argument name="data" xsi:type="array">
+      <item name="config" xsi:type="array">
+        <item name="sticky" xsi:type="boolean">true</item>
+      </item>
+    </argument>
+    
+    <bookmark name="bookmarks"/>
+    <columnsControls name="columns_controls"/>
+    <filterSearch name="fulltext"/>
+    
+    <filters name="listing_filters">
+      <argument name="data" xsi:type="array">
+        <item name="config" xsi:type="array">
+          <item name="templates" xsi:type="array">
+            <item name="filters" xsi:type="array">
+              <item name="select" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/element/ui-select</item>
+                <item name="template" xsi:type="string">ui/grid/filters/elements/ui-select</item>
+              </item>
+            </item>
+          </item>
+        </item>
+        
+        <item name="observers" xsi:type="array">
+          <item name="column" xsi:type="string">column</item>
+        </item>
+      </argument>
+    </filters>
+    <paging name="listing_paging"/>
+  </listingToolbar>
+  
+  <columns name="magehook_webhook_columns">
+    <argument name="data" xsi:type="array">
+      <item name="config" xsi:type="array">
+        <item name="storageConfig" xsi:type="array">
+          <item name="provider" xsi:type="string">
+            magehook_webhook_listing.magehook_webhook_listing.listing_top.bookmarks
+          </item>
+
+          <item name="namespace" xsi:type="string">current</item>
+        </item>
+        
+        <item name="childDefaults" xsi:type="array">
+          <item name="storageConfig" xsi:type="array">
+            <item name="provider" xsi:type="string">
+              magehook_webhook_listing.magehook_webhook_listing.listing_top.bookmarks
+            </item>
+            <item name="root" xsi:type="string">columns.${ $.index }</item>
+            <item name="namespace" xsi:type="string">current.${ $.storageConfig.root }</item>
+          </item>
+        </item>
+      </item>
+    </argument>
+    
+    <column name="name" sortOrder="10">
+      <settings>
+        <filter>text</filter>
+        <label translate="true">Name</label>
+        <dataType>text</dataType>
+        <sortable>false</sortable>
+      </settings>
+    </column>
+    
+    <column name="deployment_mode"
+            class="MageHook\Hook\Ui\Component\Listing\Column\DeploymentMode"
+            sortOrder="20">
+      <settings>
+        <filter>text</filter>
+        <label translate="true">Deployment Mode</label>
+        <dataType>text</dataType>
+        <sortable>false</sortable>
+      </settings>
+    </column>
+    
+    <column name="status"
+            class="MageHook\Hook\Ui\Component\Listing\Column\Status"
+            sortOrder="30">
+      <settings>
+        <filter>text</filter>
+        <label translate="true">Status</label>
+        <dataType>text</dataType>
+        <sortable>false</sortable>
+      </settings>
+    </column>
+    
+    <column name="event"
+            class="MageHook\Hook\Ui\Component\Listing\Column\Event"
+            sortOrder="50">
+      <settings>
+        <filter>text</filter>
+        <label translate="true">Event</label>
+        <dataType>text</dataType>
+        <sortable>false</sortable>
+      </settings>
+    </column>
+    
+    <column name="url" sortOrder="60">
+      <settings>
+        <filter>text</filter>
+        <label translate="true">URL</label>
+        <dataType>text</dataType>
+        <sortable>false</sortable>
+      </settings>
+    </column>
+    
+    <actionsColumn name="actions"
+                   class="MageHook\Hook\Ui\Component\Listing\Column\PostActions"
+                   sortOrder="80">
+      <settings>
+        <indexField>id</indexField>
+        <sortable>false</sortable>
+      </settings>
+    </actionsColumn>
+  </columns>
+</listing>

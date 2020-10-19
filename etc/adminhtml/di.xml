@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+<!--
+* @author MageHook <info@magehook.com>
+* @package MageHook_Hook
+*
+* For the full copyright and license information, please view the LICENSE.txt
+* file that was distributed with this source code.
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+  <type name="MageHook\Hook\Block\Adminhtml\System\Config\Form\Field\Hook\KeyValue">
+    <arguments>
+      <argument name="renderColumns"
+                xsi:type="array">
+        <item name="key"
+              xsi:type="array">
+          <item name="label"
+                xsi:type="string">Key</item>
+          <item name="class"
+                xsi:type="string">required-entry</item>
+        </item>
+        
+        <item name="value"
+              xsi:type="array">
+          <item name="label"
+                xsi:type="string">Value</item>
+          <item name="class"
+                xsi:type="string">required-entry</item>
+        </item>
+      </argument>
+    </arguments>
+  </type>
+
+  <!-- "magehook_webhook_listing" Filter pool including it's appliers -->
+  <virtualType name="MageHook\Hook\View\Element\UiComponent\DataProvider\Webhook\FilterPool"
+               type="Magento\Framework\View\Element\UiComponent\DataProvider\FilterPool">
+    <arguments>
+      <argument name="appliers"
+                xsi:type="array">
+        <item name="regular"
+              xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\RegularFilter</item>
+        <item name="fulltext"
+              xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\FulltextFilter</item>
+      </argument>
+    </arguments>
+  </virtualType>
+
+  <!-- MageHook_Hook::view/adminhtml/ui_component?magehook_webhook_listing dataprovider -->
+  <virtualType name="MageHook\Hook\View\Element\UiComponent\DataProvider\Webhook\Listing"
+               type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+    <arguments>
+      <argument name="collection"
+                xsi:type="object"
+                shared="false">MageHook\Hook\Model\ResourceModel\Webhook\Collection</argument>
+      <argument name="filterPool"
+                xsi:type="object"
+                shared="false">MageHook\Hook\View\Element\UiComponent\DataProvider\Webhook\FilterPool</argument>
+    </arguments>
+  </virtualType>
+
+  <!-- Injects the selection "event options" UI Component configuration into the form UI Component -->
+  <type name="Magento\Framework\View\Element\UiComponentFactory">
+    <plugin name="MageHook_Hook_Plugin_Magento_Framework_View_Element_UiComponentFactory"
+            type="MageHook\Hook\Plugin\Magento\Framework\View\Element\UiComponentFactory"/>
+  </type>
+
+  <!-- Inject UI component data config Factory -->
+  <type name="MageHook\Hook\Plugin\Magento\Framework\View\Element\UiComponentFactory">
+    <arguments>
+      <argument name="configFactory" xsi:type="object">uiComponentConfigFactory</argument>
+    </arguments>
+  </type>
+</config>

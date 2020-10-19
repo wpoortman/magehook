@@ -1,0 +1,117 @@
+<?xml version="1.0"?>
+<!--
+ * @author MageHook <info@magehook.com>
+ * @package MageHook_Hook
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+  <preference for="MageHook\Hook\Api\Data\WebhookInterface"
+              type="MageHook\Hook\Model\Webhook"/>
+  <preference for="MageHook\Hook\Api\WebhookRepositoryInterface"
+              type="MageHook\Hook\Model\WebhookRepository"/>
+  <preference for="MageHook\Hook\ManagerInterface"
+              type="MageHook\Hook\Manager"/>
+  <preference for="MageHook\Hook\Model\Queue\OperationMessageInterface"
+              type="MageHook\Hook\Model\Queue\Message"/>
+
+  <!-- bin/magento CLI commands -->
+  <type name="Magento\Framework\Console\CommandListInterface">
+    <arguments>
+      <argument name="commands"
+                xsi:type="array">
+          <item name="commandHooksClean"
+                xsi:type="object">MageHook\Hook\Console\Command\HookCleanCommand</item>
+          <item name="commandHooksEvents"
+                xsi:type="object">MageHook\Hook\Console\Command\HookEventsCommand</item>
+          <item name="commandHooksList"
+                xsi:type="object">MageHook\Hook\Console\Command\HookListCommand</item>
+      </argument>
+    </arguments>
+  </type>
+
+  <type name="MageHook\Hook\Manager">
+    <arguments>
+      <argument name="invoker"
+                xsi:type="object">MageHook\Hook\Event\Observer\Invoker</argument>
+      <argument name="eventsHelper"
+                xsi:type="object">MageHook\Hook\Helper\Events</argument>
+    </arguments>
+  </type>
+
+  <type name="MageHook\Hook\Model\Config\Source\Webhook\Event">
+    <arguments>
+      <argument name="eventsHelper"
+                xsi:type="object">MageHook\Hook\Helper\Events</argument>
+    </arguments>
+  </type>
+
+  <type name="MageHook\Hook\Helper\Events">
+    <arguments>
+      <argument name="config"
+                xsi:type="object">MageHook\Hook\Event\Config</argument>
+    </arguments>
+  </type>
+
+  <type name="Magento\Framework\EntityManager\MetadataPool">
+    <arguments>
+        <argument name="metadata"
+                  xsi:type="array">
+          <item name="MageHook\Hook\Model\Webhook"
+                xsi:type="array">
+            <item name="entityTableName"
+                  xsi:type="string">magehook_webhook</item>
+            <item name="identifierField"
+                  xsi:type="string">id</item>
+          </item>
+        </argument>
+    </arguments>
+  </type>
+
+  <type name="MageHook\Hook\Model\ResourceModel\Webhook\Grid\Collection">
+    <arguments>
+      <argument name="mainTable"
+                xsi:type="string">magehook_webhook</argument>
+      <argument name="eventPrefix"
+                xsi:type="string">webhook_collection</argument>
+      <argument name="eventObject"
+                xsi:type="string">webhook_grid_collection</argument>
+      <argument name="resourceModel"
+                xsi:type="object">MageHook\Hook\Model\ResourceModel\Webhook</argument>
+    </arguments>
+  </type>
+
+  <!-- Webhook grid collection -->
+  <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+    <arguments>
+      <argument name="collections"
+                xsi:type="array">
+          <item name="magehook_webhook_listing_data_source"
+                xsi:type="string">MageHook\Hook\Model\ResourceModel\Webhook\Grid\Collection</item>
+      </argument>
+    </arguments>
+  </type>
+
+  <!-- "async.webhook.http-request" Merger class -->
+  <type name="Magento\Framework\MessageQueue\MergerFactory">
+    <arguments>
+      <argument name="mergers"
+                xsi:type="array">
+          <item name="hookHttpRequest"
+                xsi:type="string">MageHook\Hook\Model\Queue\MessageMerger</item>
+      </argument>
+    </arguments>
+  </type>
+
+  <type name="MageHook\Hook\Model\Queue\ConsumerTypeList">
+    <arguments>
+      <argument name="types"
+                xsi:type="array">
+        <item name="default"
+              xsi:type="object">MageHook\Hook\Model\Queue\Consumer\Type\Type\Proxy</item>
+      </argument>
+    </arguments>
+  </type>
+</config>

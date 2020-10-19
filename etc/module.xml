@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!--
+ * @author MageHook <info@magehook.com>
+ * @package MageHook_Hook
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Module/etc/module.xsd">
+  <module name="MageHook_Hook"
+          setup_version="1.0.1">
+    <sequence>
+      <module name="Magento_Webapi"/>
+      <module name="Magento_Ui"/>
+    </sequence>
+  </module>
+</config>

@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!--
+ * @author MageHook <info@magehook.com>
+ * @package MageHook_Hook
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Communication/etc/communication.xsd">
+  <topic name="async.webhook.http-request"
+         request="MageHook\Hook\Model\Queue\OperationMessageInterface">
+    <handler name="async.webhook.http-request.handler"
+             type="MageHook\Hook\Model\Queue\Consumer"
+             method="processOperations"/>
+  </topic>
+</config>

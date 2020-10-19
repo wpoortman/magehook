@@ -1,0 +1,89 @@
+<?xml version="1.0"?>
+<!--
+ * @author MageHook <info@magehook.com>
+ * @package MageHook_Hook
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+-->
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+  <!-- Webhook Table -->
+  <table name="magehook_webhook"
+         resource="default"
+         engine="innodb"
+         comment="Webhook Table">
+    <column xsi:type="int"
+            name="id"
+            padding="11"
+            unsigned="false"
+            nullable="false"
+            identity="true"
+            comment="Webhook ID"/>
+    <column xsi:type="timestamp"
+            name="created_at"
+            on_update="false"
+            nullable="true"
+            comment="Created At"/>
+    <column xsi:type="varchar"
+            name="deployment_mode"
+            nullable="true"
+            length="25"
+            comment="Deployment Mode"/>
+    <column xsi:type="varchar"
+            name="type"
+            nullable="false"
+            length="25"
+            comment="Type"
+            default="adminhtml"/>
+    <column xsi:type="int"
+            name="is_active"
+            padding="10"
+            unsigned="true"
+            nullable="true"
+            identity="false"
+            comment="Is Active"/>
+    <column xsi:type="varchar"
+            name="name"
+            nullable="true"
+            length="100"
+            comment="Name"/>
+    <column xsi:type="varchar"
+            name="event"
+            nullable="true"
+            length="255"
+            comment="Event Name"/>
+    <column xsi:type="blob"
+            name="url"
+            nullable="true"
+            comment="Request URL"/>
+    <column xsi:type="blob"
+            name="query_data"
+            nullable="true"
+            comment="Query Data"/>
+    <column xsi:type="int"
+            name="exceptions"
+            padding="10"
+            unsigned="true"
+            nullable="true"
+            identity="false"
+            default="0"
+            comment="Total exceptions"/>
+    <column xsi:type="int"
+            name="only_signal"
+            padding="10"
+            unsigned="true"
+            nullable="true"
+            identity="false"
+            comment="Only Signal"
+            default="0"/>
+    <column xsi:type="text"
+            name="custom_options"
+            nullable="true"
+            comment="Custom Options"/>
+    <constraint xsi:type="primary"
+                referenceId="PRIMARY">
+      <column name="id"/>
+    </constraint>
+  </table>
+</schema>

@@ -1,0 +1,21 @@
+{
+    "magehook_webhook": {
+        "column": {
+            "id": true,
+            "created_at": true,
+            "deployment_mode": true,
+            "type": true,
+            "is_active": true,
+            "name": true,
+            "event": true,
+            "url": true,
+            "query_data": true,
+            "exceptions": true,
+            "only_signal": true,
+            "custom_options": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    }
+}

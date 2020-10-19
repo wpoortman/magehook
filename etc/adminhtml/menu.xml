@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!--
+ * @author MageHook <info@magehook.com>
+ * @package MageHook_Hook
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+  <menu>
+    <add id="MageHook_Hook::system_webhook"
+         title="Hook Management"
+         translate="title"
+         module="MageHook_Hook"
+         sortOrder="10"
+         parent="Magento_Backend::system_tools"
+         action="webhook/grid/index"
+         resource="MageHook_Hook::default"/>
+  </menu>
+</config>

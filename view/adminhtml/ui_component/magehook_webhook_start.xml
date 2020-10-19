@@ -1,0 +1,88 @@
+<?xml version="1.0"?>
+<!--
+ * @author MageHook <info@magehook.com>
+ * @package MageHook_Hook
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+-->
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+  <argument name="data" xsi:type="array">
+    <item name="js_config" xsi:type="array">
+      <item name="provider" xsi:type="string">magehook_webhook_start.magehook_webhook_start_data_source</item>
+      <item name="deps" xsi:type="string">magehook_webhook_start.magehook_webhook_start_data_source</item>
+    </item>
+    <item name="config" xsi:type="array">
+      <item name="dataScope" xsi:type="string">data</item>
+      <item name="namespace" xsi:type="string">magehook_webhook_start</item>
+    </item>
+    <item name="template" xsi:type="string">templates/form/collapsible</item>
+  </argument>
+
+  <settings>
+    <buttons>
+      <button name="back" class="MageHook\Hook\Block\Adminhtml\Webhook\BackButton"/>
+      <button name="save" class="MageHook\Hook\Block\Adminhtml\Webhook\Start\SaveAndContinueButton"/>
+    </buttons>
+    <namespace>magehook_webhook_start</namespace>
+    <dataScope>data</dataScope>
+  </settings>
+
+  <dataSource name="magehook_webhook_start_data_source">
+    <argument name="dataProvider" xsi:type="configurableObject">
+      <argument name="class" xsi:type="string">MageHook\Hook\Ui\DataProvider\Form\Webhook</argument>
+      <argument name="name" xsi:type="string">magehook_webhook_start_data_source</argument>
+      <argument name="primaryFieldName" xsi:type="string">event</argument>
+      <argument name="requestFieldName" xsi:type="string">event</argument>
+      <argument name="data" xsi:type="array">
+        <item name="config" xsi:type="array">
+          <item name="submit_url" xsi:type="url" path="webhook/grid/save"/>
+        </item>
+      </argument>
+    </argument>
+
+    <argument name="data" xsi:type="array">
+      <item name="js_config" xsi:type="array">
+        <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+      </item>
+    </argument>
+  </dataSource>
+
+  <fieldset name="webhook">
+    <argument name="data" xsi:type="array">
+      <item name="config" xsi:type="array">
+        <item name="label" xsi:type="string" translate="true">Configuration</item>
+        <item name="sortOrder" xsi:type="number">10</item>
+      </item>
+    </argument>
+
+    <field name="is_concept">
+      <argument name="data" xsi:type="array">
+        <item name="config" xsi:type="array">
+          <item name="dataType" xsi:type="string">text</item>
+          <item name="formElement" xsi:type="string">hidden</item>
+          <item name="sortOrder" xsi:type="number">10</item>
+          <item name="dataScope" xsi:type="string">is_concept</item>
+          <item name="default" xsi:type="boolean">true</item>
+        </item>
+      </argument>
+    </field>
+
+    <field name="event">
+      <argument name="data" xsi:type="array">
+        <item name="options" xsi:type="object">MageHook\Hook\Model\Config\Source\Webhook\Event</item>
+        <item name="config" xsi:type="array">
+          <item name="dataType" xsi:type="string">text</item>
+          <item name="label" xsi:type="string" translate="true">Event</item>
+          <item name="formElement" xsi:type="string">select</item>
+          <item name="sortOrder" xsi:type="number">20</item>
+          <item name="dataScope" xsi:type="string">event</item>
+          <item name="validation" xsi:type="array">
+            <item name="required-entry" xsi:type="boolean">true</item>
+          </item>
+        </item>
+      </argument>
+    </field>
+  </fieldset>
+</form>

@@ -1,0 +1,24 @@
+{
+  "name": "wpoortman/magehook-hook",
+  "description": "Webhook abstraction for Magento 2",
+  "version": "1.0.0",
+  "type": "magento2-module",
+  "require": {
+    "php": ">=7.2"
+  },
+  "authors": [
+    {
+      "name": "Willem Poortman",
+      "email": "willem@magehook.com"
+    }
+  ],
+  "license": "GPL-3.0-or-later",
+  "autoload": {
+    "files": [
+      "registration.php"
+    ],
+    "psr-4": {
+      "MageHook\\Hook\\": ""
+    }
+  }
+}

@@ -1,0 +1,88 @@
+<?xml version="1.0"?>
+<!--
+* @author MageHook <info@magehook.com>
+* @package MageHook_Hook
+*
+* For the full copyright and license information, please view the LICENSE.txt
+* file that was distributed with this source code.
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+  <system>
+    <section id="hook"
+             translate="label"
+             sortOrder="10"
+             showInDefault="1"
+             showInWebsite="0"
+             showInStore="0">
+      <label>MageHook</label>
+      <tab>service</tab>
+      <resource>MageHook_Hook::config_hooks</resource>
+      <group id="general"
+             translate="label"
+             sortOrder="10"
+             showInDefault="1"
+             showInWebsite="0"
+             showInStore="0">
+        <label>General</label>
+
+        <field id="active"
+               translate="label"
+               type="select"
+               sortOrder="10"
+               showInDefault="1"
+               showInWebsite="0"
+               showInStore="0">
+          <label>Active</label>
+          <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+        </field>
+
+        <field id="environment"
+               translate="label"
+               type="select"
+               sortOrder="20"
+               showInDefault="1"
+               showInWebsite="0"
+               showInStore="0">
+          <label>Environment</label>
+          <comment>Select the current application environment</comment>
+          <source_model>MageHook\Hook\Model\Config\Source\Environment</source_model>
+        </field>
+      </group>
+
+      <group id="consumer_type"
+             translate="label"
+             sortOrder="10"
+             showInDefault="1"
+             showInWebsite="0"
+             showInStore="0">
+        <label>Consumer Types</label>
+        <comment>Consumer Types are responsible for grouping events and processing both the outgoing request and incoming response. Below you'll find the configuration options per type. Please contact the system administrator for more information about webhook consumers.</comment>
+        <attribute type="expanded">1</attribute>
+
+        <group id="type_default"
+               translate="label"
+               sortOrder="10"
+               showInDefault="1"
+               showInWebsite="0"
+               showInStore="0">
+          <label>Default</label>
+          <comment>Default type settings are used as an abstraction layer for this and other custom consumers.</comment>
+          <attribute type="expanded">1</attribute>
+
+          <field id="default_user_agent"
+                 translate="label comment"
+                 type="text"
+                 sortOrder="10"
+                 showInDefault="1"
+                 showInWebsite="0"
+                 showInStore="0">
+            <label>User Agent</label>
+            <comment>The User-Agent request header contains a characteristic string that allows the network protocol peers to identify the application type, operating system, software vendor or software version of the requesting software user agent.</comment>
+            <attribute type="expanded">1</attribute>
+          </field>
+        </group>
+      </group>
+    </section>
+  </system>
+</config>

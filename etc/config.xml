@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!--
+ * @author MageHook <info@magehook.com>
+ * @package MageHook_Hook
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+  <default>
+    <hook>
+      <general>
+        <active>0</active>
+        <environment>unknown</environment>
+      </general>
+      <consumer_type>
+        <type_default>
+          <default_user_agent>MageHook-Hook/2.3</default_user_agent>
+        </type_default>
+      </consumer_type>
+    </hook>
+  </default>
+</config>

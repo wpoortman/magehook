@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!--
+ * @author MageHook <info@magehook.com>
+ * @package MageHook_Hook
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework-message-queue:etc/consumer.xsd">
+  <!-- Reference XML: queue_publisher.xml -->
+  <consumer name="hookHttpRequest"
+            queue="webhook_http_request_queue"
+            connection="db"
+            consumerInstance="Magento\Framework\MessageQueue\BatchConsumer"
+            handler="MageHook\Hook\Model\Queue\Consumer::processOperations"/>
+</config>
