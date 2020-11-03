@@ -28,4 +28,4 @@ MageHook will always release as a Commerce and Open Source compatible version.
 - Debugging insights
 
 ## Contributors
-- Willem Poortman - [Github](https://github.com/) - [Twitter](https://twitter.com/wpoortman)
+- Willem Poortman - [Github](https://github.com/wpoortman) - [Twitter](https://twitter.com/wpoortman) - [Linkedin](https://www.linkedin.com/in/wpoortman)

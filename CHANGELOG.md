@@ -13,7 +13,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - **Fixed** for any bug fixes.
 - **Security** in case of vulnerabilities.
 
-*Will remain empty until the first stable release.*
+## [1.0.1]
+
+## Changed
+- Package name change from wpoortman/magehook-hook -> wpoortman/magehook
+- Minor README improvements
 
 ## [1.0.0]
 
