@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace MageHook\Hook\Model\Queue;
 
 use Magento\AsynchronousOperations\Model\Operation;
+use Magento\AsynchronousOperations\Model\OperationStatusValidator;
 use Magento\Framework\Serialize\SerializerInterface;
 use function is_array;
 
@@ -33,9 +34,10 @@ class Message extends Operation implements OperationMessageInterface
      */
     public function __construct(
         SerializerInterface $serializerInterface,
+        OperationStatusValidator $operationStatusValidator,
         array $data = []
     ) {
-        parent::__construct($data);
+        parent::__construct($operationStatusValidator, $data);
 
         $this->serializerInterface = $serializerInterface;
     }
