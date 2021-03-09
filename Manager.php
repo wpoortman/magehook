@@ -123,7 +123,6 @@ class Manager implements ManagerInterface
             } catch (Exception $exception) {
                 $this->loggerInterface->critical($exception->getMessage());
             }
-//Warning: Use of undefined constant OperationStatusValidator - assumed 'OperationStatusValidator' (this will throw an Error in a future version of PHP) in /var/www/html/vendor/wpoortman/magehook/Model/Queue/Message.php on line 40
 
             Profiler::stop('WEBHOOK:' . $searchEvent[EventsHelper::EVENT_NAME]);
         }
