@@ -17,9 +17,9 @@
         magehook_webhook_listing.magehook_webhook_listing_data_source
       </item>
     </item>
-    
+
     <item name="spinner" xsi:type="string">magehook_webhook_columns</item>
-    
+
     <item name="buttons" xsi:type="array">
       <item name="add" xsi:type="array">
         <item name="name" xsi:type="string">add</item>
@@ -29,7 +29,7 @@
       </item>
     </item>
   </argument>
-  
+
   <dataSource name="magehook_webhook_listing_data_source">
     <argument name="dataProvider" xsi:type="configurableObject">
       <argument name="class" xsi:type="string">
@@ -49,18 +49,18 @@
       </argument>
     </argument>
   </dataSource>
-  
+
   <listingToolbar name="listing_top">
     <argument name="data" xsi:type="array">
       <item name="config" xsi:type="array">
         <item name="sticky" xsi:type="boolean">true</item>
       </item>
     </argument>
-    
+
     <bookmark name="bookmarks"/>
     <columnsControls name="columns_controls"/>
     <filterSearch name="fulltext"/>
-    
+
     <filters name="listing_filters">
       <argument name="data" xsi:type="array">
         <item name="config" xsi:type="array">
@@ -73,7 +73,7 @@
             </item>
           </item>
         </item>
-        
+
         <item name="observers" xsi:type="array">
           <item name="column" xsi:type="string">column</item>
         </item>
@@ -81,7 +81,7 @@
     </filters>
     <paging name="listing_paging"/>
   </listingToolbar>
-  
+
   <columns name="magehook_webhook_columns">
     <argument name="data" xsi:type="array">
       <item name="config" xsi:type="array">
@@ -92,7 +92,7 @@
 
           <item name="namespace" xsi:type="string">current</item>
         </item>
-        
+
         <item name="childDefaults" xsi:type="array">
           <item name="storageConfig" xsi:type="array">
             <item name="provider" xsi:type="string">
@@ -104,7 +104,7 @@
         </item>
       </item>
     </argument>
-    
+
     <column name="name" sortOrder="10">
       <settings>
         <filter>text</filter>
@@ -113,7 +113,7 @@
         <sortable>false</sortable>
       </settings>
     </column>
-    
+
     <column name="deployment_mode"
             class="MageHook\Hook\Ui\Component\Listing\Column\DeploymentMode"
             sortOrder="20">
@@ -124,7 +124,7 @@
         <sortable>false</sortable>
       </settings>
     </column>
-    
+
     <column name="status"
             class="MageHook\Hook\Ui\Component\Listing\Column\Status"
             sortOrder="30">
@@ -135,8 +135,8 @@
         <sortable>false</sortable>
       </settings>
     </column>
-    
-    <column name="event"
+
+    <column name="event_label"
             class="MageHook\Hook\Ui\Component\Listing\Column\Event"
             sortOrder="50">
       <settings>
@@ -146,7 +146,7 @@
         <sortable>false</sortable>
       </settings>
     </column>
-    
+
     <column name="url" sortOrder="60">
       <settings>
         <filter>text</filter>
@@ -155,7 +155,7 @@
         <sortable>false</sortable>
       </settings>
     </column>
-    
+
     <actionsColumn name="actions"
                    class="MageHook\Hook\Ui\Component\Listing\Column\PostActions"
                    sortOrder="80">

@@ -127,7 +127,7 @@ class Collection extends WebhookCollection implements SearchResultInterface
      * @return $this
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
-    public function setTotalCount(int $totalCount): self
+    public function setTotalCount($totalCount): self
     {
         return $this;
     }

@@ -57,7 +57,7 @@ class Event extends UiCoreColumn
     {
         if (isset($dataSource['data']['items'])) {
             foreach ($dataSource['data']['items'] as $key => $value) {
-                $dataSource['data']['items'][$key]['event'] = $this->eventsHelper->getEventLabel($value['event']);
+                $dataSource['data']['items'][$key]['event_label'] = $this->eventsHelper->getEventLabel($value['event']);
             }
         }
 
