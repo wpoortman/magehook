@@ -1,15 +1,14 @@
 {
   "name": "wpoortman/magehook",
-  "description": "Webhook abstraction for Magento 2",
-  "version": "1.0.1",
+  "description": "Magento 2 webhook abstraction",
+  "version": "1.0.2",
   "type": "magento2-module",
   "require": {
     "php": ">=7.2"
   },
   "authors": [
     {
-      "name": "Willem Poortman",
-      "email": "willem@magehook.com"
+      "name": "Willem Poortman"
     }
   ],
   "license": "GPL-3.0-or-later",
