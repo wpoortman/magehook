@@ -1,6 +1,5 @@
 ## Magehook
-![version](https://img.shields.io/badge/Version-1.0.0--alpha-blue)
-![hyva](https://img.shields.io/badge/Hyva_Themes-Compatible-1abc9c)
+![version](https://img.shields.io/badge/Version-1.0.2)
 ![magento-open-source](https://img.shields.io/badge/Magento_Open_Source-2.4.x-orange)
 ![adobe-commerce](https://img.shields.io/badge/Adobe_Commerce-2.4.x-red)
 
@@ -10,6 +9,7 @@ possess any webhook events by default and won't get any in the future.
 ## Installation
 ```
 composer require wpoortman/magehook
+```
 
 ## Documentation
 - [Global](https://docs.magehook.com)
