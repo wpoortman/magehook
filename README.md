@@ -1,5 +1,5 @@
 ## Magehook
-![version](https://img.shields.io/badge/Version-1.0.2)
+![version](https://img.shields.io/badge/Version-1.0.2-blue)
 ![magento-open-source](https://img.shields.io/badge/Magento_Open_Source-2.4.x-orange)
 ![adobe-commerce](https://img.shields.io/badge/Adobe_Commerce-2.4.x-red)
 
