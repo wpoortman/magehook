@@ -1,14 +1,18 @@
-MageHook Hook
-====================
-MageHook is an abstraction layer to create and dispatch custom webhooks for Magento 2.
+## Magehook
+![version](https://img.shields.io/badge/Version-1.0.0--alpha-blue)
+![hyva](https://img.shields.io/badge/Hyva_Themes-Compatible-1abc9c)
+![magento-open-source](https://img.shields.io/badge/Magento_Open_Source-2.4.x-orange)
+![adobe-commerce](https://img.shields.io/badge/Adobe_Commerce-2.4.x-red)
 
-This module does not possess any webhook events by default and won't get any in the future. Event extensions can be build upon this module or support me by buying extensions from my [extensions store](https://store.magehook.com/).
+MageHook is an abstraction layer to create and dispatch custom webhooks for Magento 2. This module does not
+possess any webhook events by default and won't get any in the future.
 
-Start or expand your event driven approach. Give it a try and let me know what you think!
+## Installation
+```
+composer require wpoortman/magehook
 
-## More information
-- [MageHook Documentation](https://docs.magehook.com)
-- [MageHook Store](https://store.magehook.com/)
+## Documentation
+- [Global](https://docs.magehook.com)
 
 ## Magento compatibility
 - ~~2.0.x~~
@@ -16,8 +20,6 @@ Start or expand your event driven approach. Give it a try and let me know what y
 - ~~2.2.x~~
 - **2.3.x**
 - **2.4.x**
-
-MageHook will always release as a Commerce and Open Source compatible version.
 
 ## Roadmap
 - Unit tests
@@ -27,5 +29,11 @@ MageHook will always release as a Commerce and Open Source compatible version.
 - Documentation improvements
 - Debugging insights
 
-## Contributors
-- Willem Poortman - [Github](https://github.com/wpoortman) - [Twitter](https://twitter.com/wpoortman) - [Linkedin](https://www.linkedin.com/in/wpoortman)
+## Security Vulnerabilities
+If you discover a security vulnerability within Magehook, please create a PR or send an e-mail to Willem Poortman via
+[magehook@wpoortman.nl](mailto:magehook@wpoortman.nl). All security vulnerabilities will be promptly addressed.
+
+## License
+Copyright © [Willem Poortman](https://github.com/wpoortman)
+
+Magehook is open-sourced software licensed under the [MIT license](LICENSE.md).
