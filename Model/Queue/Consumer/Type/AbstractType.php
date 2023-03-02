@@ -74,7 +74,7 @@ abstract class AbstractType extends Client implements TypeInterface
      *
      * {@inheritDoc}
      */
-    public function request($method, $uri = '', array $options = [])
+    public function request(string $method, $uri = '', array $options = []): ResponseInterface
     {
         try {
             return parent::request($method, $uri, $options);
