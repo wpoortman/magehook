@@ -2,7 +2,6 @@
 [![Latest Stable Version](http://poser.pugx.org/wpoortman/magehook/v)](https://packagist.org/packages/wpoortman/magehook)
 [![Total Downloads](http://poser.pugx.org/wpoortman/magehook/downloads)](https://packagist.org/packages/wpoortman/magehook)
 [![License](http://poser.pugx.org/magewirephp/magewire/license)](https://packagist.org/packages/magewirephp/magewire)
-[![sponsors](https://img.shields.io/badge/Sponsors-2-1abc9c)](https://github.com/sponsors/wpoortman)
 
 Magehook serves as an abstraction layer designed to facilitate the seamless creation and efficient
 dispatching of (personalized) webhooks from Magento 2. It's important to note that this module
