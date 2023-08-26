@@ -1,39 +1,37 @@
-## Magehook
-![version](https://img.shields.io/badge/Version-1.0.2-blue)
-![magento-open-source](https://img.shields.io/badge/Magento_Open_Source-2.4.x-orange)
-![adobe-commerce](https://img.shields.io/badge/Adobe_Commerce-2.4.x-red)
+# Magehook
+[![Latest Stable Version](http://poser.pugx.org/wpoortman/magehook/v)](https://packagist.org/packages/wpoortman/magehook)
+[![Total Downloads](http://poser.pugx.org/wpoortman/magehook/downloads)](https://packagist.org/packages/wpoortman/magehook)
+[![License](http://poser.pugx.org/magewirephp/magewire/license)](https://packagist.org/packages/magewirephp/magewire)
+[![sponsors](https://img.shields.io/badge/Sponsors-2-1abc9c)](https://github.com/sponsors/wpoortman)
 
-MageHook is an abstraction layer to create and dispatch custom webhooks for Magento 2. This module does not
-possess any webhook events by default and won't get any in the future.
+Magehook serves as an abstraction layer designed to facilitate the seamless creation and efficient
+dispatching of (personalized) webhooks from Magento 2. It's important to note that this module
+doesn't come equipped with pre-defined webhook events by default.
+
+[![Twitter](https://img.shields.io/twitter/url/https/twitter.com/wpoortman.svg?style=social&label=Author:%20%40wpoortman)](https://twitter.com/wpoortman)
 
 ## Installation
 ```
-composer require wpoortman/magehook
+composer require magewirephp/magewire
 ```
 
 ## Documentation
-- [Global](https://docs.magehook.com)
+- [Global](https://magehook.gitbook.io/magehook/)
 
-## Magento compatibility
-- ~~2.0.x~~
-- ~~2.1.x~~
-- ~~2.2.x~~
-- **2.3.x**
-- **2.4.x**
+## More
+Creating layers of abstraction and tools to simplify complex situations for other developers is a major source of motivation for me. It's one of the reasons I love what I do. Each of my code repositories aims to achieve this. Take a look at my other repositories - they might be helpful for you.
 
-## Roadmap
-- Unit tests
-- Caching optimization
-- Eliminate registry classes
-- Overall code / structural improvements
-- Documentation improvements
-- Debugging insights
+- [Magewire PHP](https://github.com/magewirephp/magewire)
+- [Magehook - Logging](https://github.com/wpoortman/hook-logging)
+- [Magehook - Sales](https://github.com/wpoortman/hook-events-sales)
+- [Magehook - Customer](https://github.com/wpoortman/hook-events-customer)
 
 ## Security Vulnerabilities
-If you discover a security vulnerability within Magehook, please create a PR or send an e-mail to Willem Poortman via
-[magehook@wpoortman.nl](mailto:magehook@wpoortman.nl). All security vulnerabilities will be promptly addressed.
+If you discover a security vulnerability within Magehook, please create a
+[merge request](https://github.com/wpoortman/magehook/pulls) or an
+[discussion](https://github.com/wpoortman/magehook/discussions). All security vulnerabilities will be promptly addressed.
 
 ## License
 Copyright © [Willem Poortman](https://github.com/wpoortman)
 
-Magehook is open-sourced software licensed under the [MIT license](LICENSE.md).
+Magewire is open-sourced software licensed under the [MIT license](LICENSE.md).
