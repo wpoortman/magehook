@@ -7,6 +7,7 @@ Magehook serves as an abstraction layer designed to facilitate the seamless crea
 dispatching of (personalized) webhooks from Magento 2. It's important to note that this module
 doesn't come equipped with pre-defined webhook events by default.
 
+#### Follow on Twitter
 [![Twitter](https://img.shields.io/twitter/url/https/twitter.com/wpoortman.svg?style=social&label=Author:%20%40wpoortman)](https://twitter.com/wpoortman)
 
 ## Installation
