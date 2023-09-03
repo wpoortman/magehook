@@ -12,7 +12,7 @@ doesn't come equipped with pre-defined webhook events by default.
 
 ## Installation
 ```
-composer require magewirephp/magewire
+composer require wpoortman/magehook
 ```
 
 ## Documentation
